@@ -48,6 +48,8 @@ jobs:
         uses: TriPSs/conventional-changelog-action@v4
         with:
           github-token: ${{ secrets.TOKEN_GITHUB_ACTION }}
+          git-user-name: LucaPascucci
+          git-user-email: lucapascucci19@gmail.com
           output-file: "false"
 
       - name: Create Release
