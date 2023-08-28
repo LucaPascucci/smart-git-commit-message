@@ -1,0 +1,25 @@
+<div class="border flex-row p-4 m-2 shadow-lg rounded-md"> <!-- graficamente devono diventare delle card -->
+  <div
+    class="flex flex-row gap-4 items-center justify-center"
+  >
+    <div class="font-mono text-2xl">{{ stepMirror.getNumber(step) }}.</div>
+    <div class="font-mono text-2xl">{{ stepMirror.getTitle(step) }}</div>
+  </div>
+
+  <div class="flex flex-col pt-2"> <!-- div padre -->
+      <app-message-step *ngIf="step === 'Message'"
+        [placeholder]="stepMirror.getPlaceholder(step)"
+        (newCommitMessage)="updateMessage($event)">
+      </app-message-step>
+      <app-commit-type-step *ngIf="step === 'CommitType'"
+        (selectedCommitType)="updateCommitType($event)">
+      </app-commit-type-step>
+      <app-emoji-step *ngIf="step === 'Emoji'"
+        (showEmoji)="updateShowEmoji($event)">
+      </app-emoji-step>
+      <app-task-step *ngIf="step === 'Task'"
+        [placeholder]="stepMirror.getPlaceholder(step)"
+        (newTaskId)="updateTaskId($event)">
+      </app-task-step>
+  </div>
+</div>

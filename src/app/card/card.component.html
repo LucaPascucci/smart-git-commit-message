@@ -1,0 +1,17 @@
+<div
+  [ngClass]="{'ring-1 ring-blue-600 border-blue-600': selected }"
+  class="bg-white w-52 hover:h-max hover:absolute hover:z-10 rounded-md hover:border-blue-600 overflow-hidden border-2 border-gray-200 shadow-lg cursor-pointer"
+>
+  <div class="w-full text-center text-6xl pt-6">{{ image }}</div>
+  <div class="px-6 py-4 h-full">
+    <div class="font-mono font-bold text-lg mb-2 text-gray-700 text-center">
+      {{ title }}
+    </div>
+
+    <!-- TODO aggiungere descrizione su click info button
+    <p class="font-mono text-gray-500 text-sm">
+      {{ description }}
+    </p>
+    -->
+  </div>
+</div>
