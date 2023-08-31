@@ -38,10 +38,6 @@ jobs:
             ${{ runner.os }}-
 
       - name: Install Dependencies
-        run: |
-          npm install
-
-      - name: Install Dependencies
         if: steps.cache-nodemodules.outputs.cache-hit != 'true'
         run: |
           npm ci
