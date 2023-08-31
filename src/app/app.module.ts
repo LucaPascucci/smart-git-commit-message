@@ -12,7 +12,7 @@ import { InputFieldComponent } from './input-field/input-field.component';
 import { CheckboxFieldComponent } from './checkbox-field/checkbox-field.component';
 import { CommitMessageComponent } from './commit-message/commit-message.component';
 import { StepComponent } from './step/step.component';
-import { CommitMessageService } from './commit-message.service';
+import { CommitMessageService } from './service/commit-message.service';
 import { CommitTypeStepComponent } from './commit-type-step/commit-type-step.component';
 import { MessageStepComponent } from './message-step/message-step.component';
 import { TaskStepComponent } from './task-step/task-step.component';

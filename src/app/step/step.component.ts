@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { CommitMessageService } from '../commit-message.service';
+import { CommitMessageService } from '../service/commit-message.service';
 import { Step } from '../model/step';
 import { CommitType } from '../model/commit-type';
 

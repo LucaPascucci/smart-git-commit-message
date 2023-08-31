@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
-import { CommitType } from './model/commit-type';
+import { CommitType } from '../model/commit-type';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CommitTypeService {
-
   private commitTypes: CommitType[] = [
     CommitType.FEATURE,
     CommitType.DOCUMENTATION,
@@ -20,7 +19,7 @@ export class CommitTypeService {
 
   private defaultCommitType: CommitType = CommitType.UNDEFINED;
 
-  constructor() { }
+  constructor() {}
 
   getDefaultCommitType(): CommitType {
     return this.defaultCommitType;

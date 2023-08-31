@@ -1,8 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { CommitMessageService } from './commit-message.service';
-import { StepService } from './step.service';
+import { CommitMessageService } from './service/commit-message.service';
+import { StepService } from './service/step.service';
 import { Step } from './model/step';
 
 @Component({
