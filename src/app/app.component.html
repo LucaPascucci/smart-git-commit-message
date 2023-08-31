@@ -3,19 +3,17 @@
   [message]="copiedMessage"
 ></app-notification>
 <div>
+
   <app-header></app-header>
-  <app-step
-    *ngFor="let step of steps"
-    [step]="step"
+
+  <app-step *ngFor="let step of steps"
+            [step]="step"
   ></app-step>
 
-  <!-- CONTENUTO -->
-  <div class="h-max flex flex-col gap-6 py-3">
-    <app-commit-message
-      [message]="createdMessage"
-      (copiedMessageEvent)="copiedMessageEvent()"
-    ></app-commit-message>
-  </div>
+  <app-commit-message *ngIf="commitMessageReady"
+                      [message]="commitMessage"
+                      (copiedMessageEvent)="copiedMessageEvent()"
+  ></app-commit-message>
 
   <app-footer></app-footer>
 </div>

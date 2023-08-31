@@ -11,12 +11,11 @@ import { Step } from './model/step';
 })
 export class AppComponent implements OnInit, OnDestroy {
   steps: Step[] = [];
-
-  createdMessage = '';
-
-  copiedMessage = 'Commit message successfully copied';
-  showNotification = false;
-  subscription: Subscription | undefined;
+  commitMessage: string = '';
+  commitMessageReady: boolean = false;
+  copiedMessage: string = 'Commit message successfully copied';
+  showNotification: boolean = false;
+  subscriptions: Subscription[] = [];
 
   constructor(
     private commitMessageService: CommitMessageService,
@@ -26,15 +25,20 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.subscription = this.commitMessageService
-      .getCommitMessageSubject()
-      .subscribe((message) => (this.createdMessage = message));
+    this.subscriptions.push(
+      this.commitMessageService
+        .getCommitMessageSubject()
+        .subscribe((message) => (this.commitMessage = message))
+    );
+    this.subscriptions.push(
+      this.commitMessageService
+        .getCommitMessageReadySubject()
+        .subscribe((ready) => (this.commitMessageReady = ready))
+    );
   }
 
   ngOnDestroy(): void {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-    }
+    this.subscriptions.forEach((subscription) => subscription.unsubscribe());
   }
 
   copiedMessageEvent(): void {
