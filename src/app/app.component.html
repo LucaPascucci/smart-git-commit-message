@@ -10,7 +10,8 @@
             [step]="step"
   ></app-step>
 
-  <app-commit-message *ngIf="commitMessageReady"
+  <!-- *ngIf="commitMessageReady" -->
+  <app-commit-message
                       [message]="commitMessage"
                       (copiedMessageEvent)="copiedMessageEvent()"
   ></app-commit-message>

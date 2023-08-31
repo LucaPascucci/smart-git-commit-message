@@ -37,7 +37,7 @@ export namespace Step {
         case Step.MESSAGE:
             return '...message';
         case Step.TASK:
-            return '...task ID';
+            return '...like ABC-1234';
         case Step.EMOJI:
             return '';
     }
