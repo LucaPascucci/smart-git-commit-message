@@ -13,7 +13,7 @@ export class AppComponent implements OnInit, OnDestroy {
   steps: Step[] = [];
   commitMessage: string = '';
   commitMessageReady: boolean = false;
-  copiedMessage: string = 'Commit message successfully copied';
+  copiedMessage: string = 'Commit message successfully copied 🎉';
   showNotification: boolean = false;
   subscriptions: Subscription[] = [];
 
