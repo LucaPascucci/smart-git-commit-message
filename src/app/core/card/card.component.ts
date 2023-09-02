@@ -6,11 +6,12 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./card.component.css'],
 })
 export class CardComponent implements OnInit {
-  @Input() title = '';
-  @Input() description = '';
-  @Input() image = '';
+  @Input() title: string = '';
+  @Input() description: string = '';
+  @Input() image: string = '';
   @Input() selected: boolean = false;
 
+  openPopover: boolean = false;
   constructor() {}
 
   ngOnInit(): void {}

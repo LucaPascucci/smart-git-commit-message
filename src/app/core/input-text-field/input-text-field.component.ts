@@ -7,18 +7,18 @@ import {
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-input-field',
-  templateUrl: './input-field.component.html',
-  styleUrls: ['./input-field.component.css'],
+  selector: 'app-input-text-field',
+  templateUrl: './input-text-field.component.html',
+  styleUrls: ['./input-text-field.component.css'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
       multi: true,
-      useExisting: forwardRef(() => InputFieldComponent),
+      useExisting: forwardRef(() => InputTextFieldComponent),
     },
   ],
 })
-export class InputFieldComponent
+export class InputTextFieldComponent
   implements OnInit, ControlValueAccessor, OnDestroy
 {
   @Input() id: string = '';

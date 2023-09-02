@@ -1,11 +1,16 @@
-import {Component, forwardRef, Input, OnDestroy, OnInit} from '@angular/core';
-import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR} from "@angular/forms";
-import {Subscription} from "rxjs";
+import { Component, forwardRef, Input, OnDestroy, OnInit } from '@angular/core';
+import {
+  ControlValueAccessor,
+  FormControl,
+  NG_VALUE_ACCESSOR,
+} from '@angular/forms';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-checkbox-field',
   templateUrl: './checkbox-field.component.html',
-  styleUrls: ['./checkbox-field.component.css'],providers: [
+  styleUrls: ['./checkbox-field.component.css'],
+  providers: [
     {
       provide: NG_VALUE_ACCESSOR,
       multi: true,
@@ -13,8 +18,9 @@ import {Subscription} from "rxjs";
     },
   ],
 })
-export class CheckboxFieldComponent implements OnInit, ControlValueAccessor, OnDestroy {
-
+export class CheckboxFieldComponent
+  implements OnInit, ControlValueAccessor, OnDestroy
+{
   @Input() id: string = '';
   @Input() label: string = '';
   @Input() disabled: boolean = false;
@@ -24,7 +30,7 @@ export class CheckboxFieldComponent implements OnInit, ControlValueAccessor, OnD
   private onTouched: Function | undefined;
   subscription: Subscription | undefined;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
     this.subscription = this.formControl.valueChanges.subscribe((value) => {
@@ -63,5 +69,4 @@ export class CheckboxFieldComponent implements OnInit, ControlValueAccessor, OnD
       this.onChange(value);
     }
   }
-
 }
