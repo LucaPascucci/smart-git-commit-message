@@ -30,8 +30,6 @@ export class CheckboxFieldComponent
   private onTouched: Function | undefined;
   subscription: Subscription | undefined;
 
-  constructor() {}
-
   ngOnInit(): void {
     this.subscription = this.formControl.valueChanges.subscribe((value) => {
       if (this.onChange) {

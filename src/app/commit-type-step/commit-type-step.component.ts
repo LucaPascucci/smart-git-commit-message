@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { CommitType } from '../model/commit-type';
 import { CommitTypeService } from '../service/commit-type.service';
 
@@ -7,7 +7,7 @@ import { CommitTypeService } from '../service/commit-type.service';
   templateUrl: './commit-type-step.component.html',
   styleUrls: ['./commit-type-step.component.css'],
 })
-export class CommitTypeStepComponent implements OnInit {
+export class CommitTypeStepComponent {
   commitType = CommitType;
 
   commitTypes: CommitType[] = [];
@@ -19,8 +19,6 @@ export class CommitTypeStepComponent implements OnInit {
     this.activeCommitType = this.commitTypeService.getDefaultCommitType();
     this.commitTypes = this.commitTypeService.getCommitTypes();
   }
-
-  ngOnInit(): void {}
 
   selectedType(commitType: CommitType): void {
     this.activeCommitType = commitType;

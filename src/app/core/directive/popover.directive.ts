@@ -66,7 +66,7 @@ export class PopoverDirective implements OnDestroy, OnInit {
         },
       ]);
 
-    //ToDo entender como funciona o posicionamento
+    //TODO: entender como funciona o posicionamento
     // new ConnectionPositionPair(
     //   { originX: "start", originY: "bottom" },
     //   { overlayX: "start", overlayY: "bottom" }

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommitMessageService } from '../service/commit-message.service';
 import { Step } from '../model/step';
 import { CommitType } from '../model/commit-type';
@@ -8,14 +8,12 @@ import { CommitType } from '../model/commit-type';
   templateUrl: './step.component.html',
   styleUrls: ['./step.component.css'],
 })
-export class StepComponent implements OnInit {
+export class StepComponent {
   stepMirror = Step;
 
   @Input() step: Step = Step.MESSAGE;
 
   constructor(private commitMessageService: CommitMessageService) {}
-
-  ngOnInit(): void {}
 
   updateCommitType(commitType: CommitType): void {
     this.commitMessageService.updateCommitType(commitType);
