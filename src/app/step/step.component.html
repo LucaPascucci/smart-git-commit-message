@@ -1,12 +1,12 @@
 <div class="border flex flex-col items-center justify-center p-4 m-2 shadow-lg rounded-md">
   <div
-          class="flex gap-4 items-center justify-center"
+          class="flex gap-4 items-center justify-center pb-2"
   >
       <div class="font-mono sm:text-xl">{{ stepMirror.getNumber(step) }}.</div>
       <div class="font-mono sm:text-xl">{{ stepMirror.getTitle(step) }}</div>
   </div>
 
-  <div class="flex flex-col pt-2"> <!-- div padre -->
+  <div class="flex flex-col">
       <app-message-step *ngIf="step === 'Message'"
         [placeholder]="stepMirror.getPlaceholder(step)"
         (newCommitMessage)="updateMessage($event)">

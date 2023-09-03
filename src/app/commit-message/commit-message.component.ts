@@ -1,18 +1,17 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { ClipboardService } from 'ngx-clipboard';
 
 @Component({
   selector: 'app-commit-message',
   templateUrl: './commit-message.component.html',
-  styleUrls: ['./commit-message.component.css']
+  styleUrls: ['./commit-message.component.css'],
 })
 export class CommitMessageComponent {
+  @Input() message: string = '';
 
-  @Input() message = ''
-  @Output() copiedMessageEvent = new EventEmitter<any>();
-  constructor() { }
+  constructor(private _clipboardService: ClipboardService) {}
 
-  copied(): void {
-    this.copiedMessageEvent.emit();
+  copyMessageToClipboard(): void {
+    this._clipboardService.copy(this.message);
   }
-
 }

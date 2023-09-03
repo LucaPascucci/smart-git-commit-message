@@ -2,6 +2,7 @@
   [show]="showNotification"
   [message]="copiedMessage"
 ></app-notification>
+
 <div>
 
   <app-header></app-header>
@@ -10,11 +11,7 @@
             [step]="step"
   ></app-step>
 
-  <!-- *ngIf="commitMessageReady" -->
-  <app-commit-message
-                      [message]="commitMessage"
-                      (copiedMessageEvent)="copiedMessageEvent()"
-  ></app-commit-message>
+  <app-commit-message *ngIf="commitMessageReady" [message]="commitMessage"></app-commit-message>
 
   <app-footer></app-footer>
 </div>

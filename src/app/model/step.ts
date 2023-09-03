@@ -13,7 +13,7 @@ export namespace Step {
         case Step.MESSAGE:
             return 'Write your message';
         case Step.EMOJI:
-            return 'Do you want emoji?';
+            return 'Do you want emoji? 🤔';
         case Step.COMMIT_TYPE:
             return 'Choose your commit type';
     }
