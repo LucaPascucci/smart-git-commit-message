@@ -1,13 +1,4 @@
-<div
-        *ngIf="show"
-        class="bg-white/60 hover:bg-white/80 hover:shadow-lg transition duration-150 ease-linear backdrop-blur-xl z-20 max-w-md fixed right-5 bottom-5 rounded-lg p-6 shadow"
->
-    <h1 class="sm:text-xl text-slate-700 font-medium">{{ message }}</h1>
-    <div class="flex justify-between items-center">
-        <a
-                href="#"
-                class="text-slate-500 hover:text-indigo-600 text-sm inline-flex space-x-1 items-center"
-        >
-        </a>
-    </div>
+<div *ngIf="show"
+     class="bg-white/60 hover:bg-white/80 hover:shadow-lg transition duration-150 ease-linear backdrop-blur-xl z-20 max-w-md fixed right-5 bottom-5 rounded-lg p-6 shadow">
+    <div class="text-base font-mono sm:text-lg">{{ message }}</div>
 </div>

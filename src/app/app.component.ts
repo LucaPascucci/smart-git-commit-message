@@ -11,6 +11,7 @@ import { ClipboardService, IClipboardResponse } from 'ngx-clipboard';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit, OnDestroy {
+  //TODO: gestione delle stringhe internazionalizzate i18n
   steps: Step[] = [];
   commitMessage: string = '';
   commitMessageReady: boolean = false;

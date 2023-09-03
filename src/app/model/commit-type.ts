@@ -65,23 +65,23 @@ export namespace CommitType {
   export function getDescription(type: CommitType): string {
     switch (type) {
       case CommitType.FEATURE:
-        return 'new feature for the user, not a new feature for build script';
+        return 'New feature for the user \nNot a new feature for build script';
       case CommitType.FIX:
-        return 'bug fix for the user, not a fix to a build script';
+        return 'Bug fix for the user \nNot a fix to a build script';
       case CommitType.DOCUMENTATION:
-        return 'changes to the documentation';
+        return 'Changes to the documentation';
       case CommitType.STYLE:
-        return 'formatting, missing semi colons, etc; no production code change';
+        return 'Formatting, missing semi colons, etc; \nNo production code change';
       case CommitType.REFACTOR:
-        return 'refactoring production code, eg. renaming a variable';
+        return 'Refactoring production code \nEg. renaming a variable';
       case CommitType.TEST:
-        return 'adding missing tests, refactoring tests; no production code change';
+        return 'Adding missing tests, refactoring tests; \nNo production code change';
       case CommitType.CHORE:
-        return 'regular code maintenance and updating grunt tasks etc; no production code change (eg: change to .gitignore file or .prettierrc file)';
+        return 'Regular code maintenance and updating grunt tasks etc; \nNo production code change (eg: change to .gitignore file or .prettierrc file)';
       case CommitType.BUILD:
-        return 'build related changes, for updating build configuration, development tools or other changes irrelevant to the user (eg: npm related/ adding external dependencies/ podspec related)';
+        return 'Build related changes, for updating build configuration, development tools or other changes irrelevant to the user. \nEg: npm related/ adding external dependencies/ podspec related';
       case CommitType.PERFORMANCE:
-        return 'code change that improves performance';
+        return 'Code change that improves performance';
       case CommitType.UNDEFINED:
         return '';
     }
