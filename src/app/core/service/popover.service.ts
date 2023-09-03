@@ -3,7 +3,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable()
 export class PopoverService {
-  private state: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  private state: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
 
   constructor() {}
 

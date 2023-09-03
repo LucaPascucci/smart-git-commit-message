@@ -8,20 +8,19 @@ import {
   TemplateRef,
   ViewContainerRef,
 } from '@angular/core';
-import { Overlay, OverlayRef } from '@angular/cdk/overlay';
-import { Subject } from 'rxjs';
-import { TemplatePortal } from '@angular/cdk/portal';
-import { PopoverService } from '../service/popover.service';
+import {Overlay, OverlayRef} from '@angular/cdk/overlay';
+import {Subject, takeUntil} from 'rxjs';
+import {TemplatePortal} from '@angular/cdk/portal';
+import {PopoverService} from '../service/popover.service';
+
+// TODO: -> https://medium.com/@JoaoPoggioli/creating-a-custom-popover-with-overlay-in-angular-dfb330cfd124
 
 @Directive({
-  selector: '[popoverDirective]',
+  selector: '[popoverTrigger]',
 })
 export class PopoverDirective implements OnDestroy, OnInit {
-  @Input()
-  popoverTrigger!: TemplateRef<object>;
-
-  @Input()
-  closeOnClickOutside: boolean = false;
+  @Input() popoverTrigger!: TemplateRef<object>;
+  @Input() closeOnClickOutside: boolean = false;
 
   private unsubscribe = new Subject();
   private overlayRef!: OverlayRef;
@@ -32,7 +31,7 @@ export class PopoverDirective implements OnDestroy, OnInit {
     private vcr: ViewContainerRef,
     private popoverService: PopoverService
   ) {}
-  // TODO: -> https://medium.com/@JoaoPoggioli/creating-a-custom-popover-with-overlay-in-angular-dfb330cfd124
+
   ngOnInit(): void {
     this.createOverlay();
     this.popoverService.getState().subscribe((resp) => {
@@ -48,30 +47,36 @@ export class PopoverDirective implements OnDestroy, OnInit {
     this.unsubscribe.complete();
   }
 
-  @HostListener('click') clickou() {
+  @HostListener('click') clickou(): void {
     this.attachOverlay();
   }
 
   private createOverlay(): void {
     const scrollStrategy = this.overlay.scrollStrategies.block();
 
-    /*const positionStrategy = this.overlay.position().connectedTo(
-      this.elementRef,
-      { originX: 'start', originY: 'bottom' },
-      { overlayX: 'start', overlayY: 'top' }
+    const positionStrategy = this.overlay
+      .position()
+      .flexibleConnectedTo(this.elementRef)
+      .withPositions([
+        {
+          originX: 'start',
+          originY: 'bottom',
+          overlayX: 'start',
+          overlayY: 'top',
+        },
+      ]);
 
-      //ToDo entender como funciona o posicionamento
-      // new ConnectionPositionPair(
-      //   { originX: "start", originY: "bottom" },
-      //   { overlayX: "start", overlayY: "bottom" }
-      // ),
-      // new ConnectionPositionPair(
-      //   { originX: "start", originY: "bottom" },
-      //   { overlayX: "start", overlayY: "bottom" }
-      // )
-    );*/
+    //ToDo entender como funciona o posicionamento
+    // new ConnectionPositionPair(
+    //   { originX: "start", originY: "bottom" },
+    //   { overlayX: "start", overlayY: "bottom" }
+    // ),
+    // new ConnectionPositionPair(
+    //   { originX: "start", originY: "bottom" },
+    //   { overlayX: "start", overlayY: "bottom" }
+    // )
 
-    /*this.overlayRef = this.overlay.create({
+    this.overlayRef = this.overlay.create({
       positionStrategy,
       scrollStrategy,
       hasBackdrop: true,
@@ -85,7 +90,7 @@ export class PopoverDirective implements OnDestroy, OnInit {
         if (this.closeOnClickOutside) {
           this.detachOverlay();
         }
-      });*/
+      });
   }
 
   private attachOverlay(): void {

@@ -7,6 +7,8 @@ import { CardComponent } from './card/card.component';
 import { PopoverComponent } from './popover/popover.component';
 import { PopoverDirective } from './directive/popover.directive';
 import { NotificationComponent } from './notification/notification.component';
+import { PopoverService } from './service/popover.service';
+import { Overlay } from '@angular/cdk/overlay';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,9 @@ import { NotificationComponent } from './notification/notification.component';
     InputTextFieldComponent,
     CardComponent,
     NotificationComponent,
+    PopoverDirective,
+    PopoverComponent,
   ],
+  providers: [Overlay, PopoverService],
 })
 export class CoreModule {}
