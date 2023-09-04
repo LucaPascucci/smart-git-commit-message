@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { CommitType } from '../model/commit-type';
 import { CommitTypeService } from 'src/app/service/commit-type.service';
 
@@ -10,53 +10,42 @@ export class CommitMessageService {
   private readonly commitMessageSubject: BehaviorSubject<string> =
     new BehaviorSubject('');
 
-  private readonly commitMessageReadySubject: BehaviorSubject<boolean> =
-    new BehaviorSubject(false);
-
   private taskId: string | undefined;
   private commitType: CommitType;
   private showEmoji: boolean = false;
   private message: string | undefined;
-  private messageReady: boolean = false;
 
   constructor(private commitTypeService: CommitTypeService) {
     this.commitType = this.commitTypeService.getDefaultCommitType();
   }
 
-  getCommitMessageSubject(): BehaviorSubject<string> {
-    return this.commitMessageSubject;
-  }
-
-  getCommitMessageReadySubject(): BehaviorSubject<boolean> {
-    return this.commitMessageReadySubject;
+  getCommitMessage(): Observable<string> {
+    return this.commitMessageSubject.asObservable();
   }
 
   updateTaskId(taskId: string) {
     this.taskId = taskId;
-    this.updateCommitMessageReadyToBeShowed();
     this.updateCommitMessage();
   }
 
   updateCommitType(commitType: CommitType) {
     this.commitType = commitType;
-    this.updateCommitMessageReadyToBeShowed();
     this.updateCommitMessage();
   }
 
   updateShowEmoji(showEmoji: boolean) {
     this.showEmoji = showEmoji;
-    this.updateCommitMessageReadyToBeShowed();
     this.updateCommitMessage();
   }
 
   updateMessage(message: string) {
     this.message = message;
-    this.updateCommitMessageReadyToBeShowed();
     this.updateCommitMessage();
   }
 
   private updateCommitMessage() {
-    if (!this.messageReady) {
+    if (!this.checkCommitMessageComponent()) {
+      this.commitMessageSubject.next('');
       return;
     }
     let newMessage: string = '';
@@ -75,11 +64,13 @@ export class CommitMessageService {
     this.commitMessageSubject.next(newMessage);
   }
 
-  private updateCommitMessageReadyToBeShowed() {
-    this.messageReady =
+  private checkCommitMessageComponent(): boolean {
+    return (
       this.message != undefined &&
+      this.message.length > 0 &&
       this.taskId != undefined &&
-      this.commitType !== CommitType.UNDEFINED;
-    this.commitMessageReadySubject.next(this.messageReady);
+      this.taskId.length > 0 &&
+      this.commitType !== CommitType.UNDEFINED
+    );
   }
 }

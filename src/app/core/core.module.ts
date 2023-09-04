@@ -9,6 +9,7 @@ import { PopoverDirective } from './directive/popover.directive';
 import { NotificationComponent } from './notification/notification.component';
 import { PopoverService } from './service/popover.service';
 import { Overlay } from '@angular/cdk/overlay';
+import { NotificationService } from './service/notification.service';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,6 @@ import { Overlay } from '@angular/cdk/overlay';
     PopoverDirective,
     PopoverComponent,
   ],
-  providers: [Overlay, PopoverService],
+  providers: [Overlay, PopoverService, NotificationService],
 })
 export class CoreModule {}

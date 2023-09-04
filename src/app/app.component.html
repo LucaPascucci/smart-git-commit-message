@@ -1,7 +1,4 @@
-<app-notification
-  [show]="showNotification"
-  [message]="copiedMessage"
-></app-notification>
+<app-notification></app-notification>
 
 <div>
 
@@ -11,7 +8,7 @@
             [step]="step"
   ></app-step>
 
-  <app-commit-message *ngIf="commitMessageReady" [message]="commitMessage"></app-commit-message>
+  <app-commit-message></app-commit-message>
 
   <app-footer></app-footer>
 </div>

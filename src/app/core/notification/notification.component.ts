@@ -1,4 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
+import { NotificationService } from '../service/notification.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-notification',
@@ -6,7 +8,14 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./notification.component.css'],
 })
 export class NotificationComponent {
-  //TODO: creare il servizion per la gestione della notifica
-  @Input() message: string = '';
-  @Input() show: boolean = false;
+  message: string = '';
+  subscriptions: Subscription[] = [];
+
+  constructor(private notificationService: NotificationService) {
+    this.subscriptions.push(
+      this.notificationService
+        .getNotificationMessage()
+        .subscribe((message) => (this.message = message))
+    );
+  }
 }
