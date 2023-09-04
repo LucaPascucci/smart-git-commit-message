@@ -3,11 +3,11 @@ import { CommitType } from '../model/commit-type';
 import { CommitTypeService } from '../service/commit-type.service';
 
 @Component({
-  selector: 'app-commit-type-step',
-  templateUrl: './commit-type-step.component.html',
-  styleUrls: ['./commit-type-step.component.css'],
+  selector: 'app-step-commit-type',
+  templateUrl: './step-commit-type.component.html',
+  styleUrls: ['./step-commit-type.component.css'],
 })
-export class CommitTypeStepComponent {
+export class StepCommitTypeComponent {
   commitType = CommitType;
 
   commitTypes: CommitType[] = [];

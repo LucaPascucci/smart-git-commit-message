@@ -7,19 +7,19 @@
   </div>
 
   <div class="flex flex-col">
-      <app-message-step *ngIf="step === 'Message'"
+      <app-step-message *ngIf="step === 'Message'"
         [placeholder]="stepMirror.getPlaceholder(step)"
         (newCommitMessage)="updateMessage($event)">
-      </app-message-step>
-      <app-commit-type-step *ngIf="step === 'CommitType'"
+      </app-step-message>
+      <app-step-commit-type *ngIf="step === 'CommitType'"
         (selectedCommitType)="updateCommitType($event)">
-      </app-commit-type-step>
-      <app-emoji-step *ngIf="step === 'Emoji'"
+      </app-step-commit-type>
+      <app-step-emoji *ngIf="step === 'Emoji'"
         (showEmoji)="updateShowEmoji($event)">
-      </app-emoji-step>
-      <app-task-step *ngIf="step === 'Task'"
+      </app-step-emoji>
+      <app-step-task *ngIf="step === 'Task'"
         [placeholder]="stepMirror.getPlaceholder(step)"
         (newTaskId)="updateTaskId($event)">
-      </app-task-step>
+      </app-step-task>
   </div>
 </div>
