@@ -2,9 +2,11 @@
      class="p-1 sm:p-3 bg-white max-w-md mx-auto hover:border-blue-600 shadow-lg overflow-hidden rounded-md border-2 border-gray-200 cursor-pointer">
     <div class="text-3xl sm:text-6xl text-center pb-1">{{ image }}</div>
     <div class="font-mono text-xs sm:text-lg text-center text-gray-800 pb-2">{{ title }}</div>
-    <div class="text-right" [popoverTrigger]="popover" [closeOnClickOutside]="true">ℹ️</div>
+    <div class="text-right">
+        <div class="z-30 w-6 ml-auto" [popoverTrigger]="popover" [handleOnHover]="true" [handleOnClick]="true">ℹ️</div>
+    </div>
 </div>
 
 <ng-template #popover>
-    <app-popover [text]="description"></app-popover>
+    <app-popover class="z-20" [text]="description"></app-popover>
 </ng-template>

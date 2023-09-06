@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { NotificationService } from '../service/notification.service';
 import { Subscription } from 'rxjs';
 
@@ -7,7 +7,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './notification.component.html',
   styleUrls: ['./notification.component.css'],
 })
-export class NotificationComponent {
+export class NotificationComponent implements OnDestroy {
   message: string = '';
   subscriptions: Subscription[] = [];
 
@@ -17,5 +17,9 @@ export class NotificationComponent {
         .getNotificationMessage()
         .subscribe((message) => (this.message = message))
     );
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach((subscription) => subscription.unsubscribe());
   }
 }

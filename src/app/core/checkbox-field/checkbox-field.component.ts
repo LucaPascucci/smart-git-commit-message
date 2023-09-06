@@ -28,21 +28,21 @@ export class CheckboxFieldComponent
   formControl = new FormControl(false);
   private onChange: Function | undefined;
   private onTouched: Function | undefined;
-  subscription: Subscription | undefined;
+  subscriptions: Subscription[] = [];
 
   ngOnInit(): void {
-    this.subscription = this.formControl.valueChanges.subscribe((value) => {
-      if (this.onChange) {
-        this.onChange(value);
-      }
-    });
+    this.subscriptions.push(
+      this.formControl.valueChanges.subscribe((value) => {
+        if (this.onChange) {
+          this.onChange(value);
+        }
+      })
+    );
     this.setDisabledState(this.disabled);
   }
 
   ngOnDestroy() {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-    }
+    this.subscriptions.forEach((subscription) => subscription.unsubscribe());
   }
 
   registerOnChange(fn: any) {
