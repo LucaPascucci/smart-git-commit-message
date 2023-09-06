@@ -8,7 +8,7 @@ import { Step } from './model/step';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  //TODO: gestione delle stringhe internazionalizzate i18n
+  // TODO gestione delle stringhe internazionalizzate i18n
   steps: Step[] = [];
 
   constructor(private stepService: StepService) {
