@@ -1,4 +1,4 @@
-name: Angular GitHub CI/CD
+name: Angular GitHub Pages CI/CD
 on:
   push:
     branches:
@@ -17,7 +17,8 @@ jobs:
         node-version: [ 18.x ]
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
 
       - name: TODO to Issue
         uses: alstr/todo-to-issue-action@v4
