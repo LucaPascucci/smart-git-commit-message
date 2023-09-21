@@ -6,7 +6,6 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./card.component.css'],
 })
 export class CardComponent {
-  // TODO Rendere grafica rotonda come su iOS
   @Input() title: string = '';
   @Input() description: string = '';
   @Input() image: string = '';
