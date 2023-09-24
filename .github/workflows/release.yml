@@ -1,4 +1,4 @@
-name: New release from tag
+name: New release
 on:
   push:
     branches:

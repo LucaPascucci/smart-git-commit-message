@@ -1,4 +1,4 @@
-name: Angular GitHub Pages CI/CD
+name: Update master
 on:
   push:
     branches:
