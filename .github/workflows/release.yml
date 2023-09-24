@@ -1,9 +1,8 @@
 name: New release from tag
 on:
   push:
-    # Sequence of patterns matched against refs/tags
-    tags:
-      - 'v*-release' # Push events to matching v*, i.e. v1.0, v20.15.10
+    branches:
+      - release
 
 jobs:
   build:
@@ -20,7 +19,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      
+
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
@@ -52,7 +51,7 @@ jobs:
       - name: Conventional Changelog Action
         id: changelog
 
-        uses: TriPSs/conventional-changelog-action@v4
+        uses: TriPSs/conventional-changelog-action@v4.1.0
         with:
           github-token: ${{ secrets.TOKEN_GITHUB_ACTION }}
           git-user-name: LucaPascucci
